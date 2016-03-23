@@ -2,7 +2,7 @@
 export INCLUDEOS_SRC="~/IncludeOS"
 export OS="$INCLUDEOS_SRC/src"
 export TEST="~/IncludeOS/test"
-export APP="$TEST/transmit"
+export APP="$TEST/UDP"
 
 # Aliases
 alias os="cd $OS"
