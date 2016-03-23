@@ -1,7 +1,8 @@
 # Dot-source this in e.g. .bashrc
 
 # Environment vars 
-export OS="~/IncludeOS/src"
+export INCLUDEOS_SRC="~/IncludeOS"
+export OS="$INCLUDEOS_SRC/src"
 export TEST="~/IncludeOS/test"
 export APP="$TEST/transmit"
 

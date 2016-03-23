@@ -24,8 +24,9 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-(setq OS (getenv "OS"))
-(setq APP (getenv "APP"))
+(setq INCLUDEOS_SRC (or (getenv "INCLUDEOS_SRC") "~/IncludeOS"))
+(setq OS (or (getenv "OS") (concat INCLUDEOS_SRC "/src")))
+(setq APP (or (getenv "APP") (concat INCLUDEOS_SRC "/examples/demo-service" )))
 
 (defun str-make-path-target (path target)
   (concat "cd " path " && make " target " -j "))
@@ -41,7 +42,7 @@
   (make-path-target APP target))
 
 (defun make-os (target)
-  (interactive "MBuild-target ")
+  (interactive "MBuild-target: ")
   (make-path-target OS target))
 
 (defun clean-app ()
@@ -59,7 +60,7 @@
 					 
 
 (defun make (target)
-  (interactive "MBuild-target ")
+  (interactive "MBuild-target: ")
   (compile (concat (str-make-path-target OS target) " && "
 		   (str-make-path-target OS "install") " && "
 		   (str-make-path-target APP target))))
