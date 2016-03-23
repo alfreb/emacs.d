@@ -1,10 +1,5 @@
-;; Key bindings
-(global-set-key (kbd "C-c RET") 'compile)
-(global-set-key (kbd "C-x <down>") 'next-error)
-(global-set-key (kbd "C-x <up>") 'previous-error)
 
-;; Jump to error
-(setq compilation-skip-threshold 2) ;; 2 skips warnings
+;; Jump to error(setq compilation-skip-threshold 2) ;; 2 skips warnings
 
 ;; Load addons
 (add-to-list 'load-path "~/.emacs.d/extra/")
@@ -29,8 +24,49 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-(setq src (getenv "src"))
-(setq app (getenv "app"))
+(setq OS (getenv "OS"))
+(setq APP (getenv "APP"))
 
-(custom-set-variables
- '(compile-command (concat "cd " src "; make -j && make install && cd " app " && make")))
+(defun str-make-path-target (path target)
+  (concat "cd " path " && make " target " -j "))
+
+(defun make-path-target (path target)
+  (compile (str-make-path-target path target)))
+
+(defun make-install (path)
+  (compile (str-make-path-target path "install")))
+
+(defun make-app (target)
+  (interactive "MBuild-target: ")
+  (make-path-target APP target))
+
+(defun make-os (target)
+  (interactive "MBuild-target ")
+  (make-path-target OS target))
+
+(defun clean-app ()
+  (interactive)
+  (make-path-target APP "clean"))
+
+(defun clean-os ()
+  (interactive)
+  (make-path-target OS "clean"))
+
+(defun clean ()
+  (interactive)
+  (compile (concat (str-make-path-target OS "clean") " && "
+		   (str-make-path-target APP "clean"))))
+					 
+
+(defun make (target)
+  (interactive "MBuild-target ")
+  (compile (concat (str-make-path-target OS target) " && "
+		   (str-make-path-target OS "install") " && "
+		   (str-make-path-target APP target))))
+
+
+;; Key bindings
+(global-set-key (kbd "C-c RET") 'make)
+(global-set-key (kbd "C-x <down>") 'next-error)
+(global-set-key (kbd "C-x <up>") 'previous-error)
+(global-set-key (kbd "C-c c") 'clean)
