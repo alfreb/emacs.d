@@ -29,7 +29,7 @@
 (setq APP (or (getenv "APP") (concat INCLUDEOS_SRC "/examples/demo-service" )))
 
 (defun str-make-path-target (path target)
-  (concat "cd " path " && make " target " -j "))
+  (concat "cd " path " && make " target " "))
 
 (defun make-path-target (path target)
   (compile (str-make-path-target path target)))
