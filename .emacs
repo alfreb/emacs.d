@@ -24,9 +24,24 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+;; Column-numbers
+(column-number-mode)
+
 (setq INCLUDEOS_SRC (or (getenv "INCLUDEOS_SRC") "~/IncludeOS"))
 (setq OS (or (getenv "OS") (concat INCLUDEOS_SRC "/src")))
 (setq APP (or (getenv "APP") (concat INCLUDEOS_SRC "/examples/demo-service" )))
+
+(defun setapp (name)
+  (interactive "MApp: ") 
+  ;; Verify that the app exists, otherwise error
+  (setq selected-dir (concat INCLUDEOS_SRC "/test/" name))
+  (when (not (file-exists-p selected-dir))
+    (error (concat selected-dir " doesn't exist")))
+  ;; Make it idempotent
+  (progn (when (string= selected-dir APP) (error "App allready selected")) 
+	 (setq APP selected-dir)
+	 (shell-command (concat "~/.emacs.d/setapp.sh " name))
+	 (print (concat "APP is now " selected-dir))))
 
 (defun str-make-path-target (path target)
   (concat "cd " path " && make " target " "))
