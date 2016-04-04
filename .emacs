@@ -81,6 +81,13 @@
 		   (str-make-path-target APP target))))
 
 
+(defun format-buffer ()
+  "Format the whole buffer."
+  ;;(c-set-style "stroustrup")
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max))
+  (save-buffer))
+
 ;; Key bindings
 (global-set-key (kbd "C-c RET") 'make)
 (global-set-key (kbd "C-x <down>") 'next-error)
