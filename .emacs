@@ -86,6 +86,10 @@
   ;;(c-set-style "stroustrup")
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max))
+  ;; Editorconfig requires the file to be modified in order to fix it
+  (goto-char (point-max))
+  (insert "\n\n")
+  (delete-blank-lines)
   (save-buffer))
 
 ;; Key bindings
