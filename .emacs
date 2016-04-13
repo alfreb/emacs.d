@@ -1,6 +1,4 @@
 
-;; Jump to error(setq compilation-skip-threshold 2) ;; 2 skips warnings
-
 ;; Load addons
 (add-to-list 'load-path "~/.emacs.d/extra/")
 
@@ -86,9 +84,8 @@
   ;;(c-set-style "stroustrup")
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max))
-  ;; Editorconfig requires the file to be modified in order to fix it
+  (editorconfig-apply)
   (goto-char (point-max))
-  (insert "\n\n")
   (delete-blank-lines)
   (save-buffer))
 
@@ -97,3 +94,7 @@
 (global-set-key (kbd "C-x <down>") 'next-error)
 (global-set-key (kbd "C-x <up>") 'previous-error)
 (global-set-key (kbd "C-c c") 'clean)
+
+;; Jump to error
+(setq compilation-skip-threshold 2) ;; 2 skips warnings
+
