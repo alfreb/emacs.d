@@ -1,6 +1,6 @@
 #! /bin/bash
 
-[ -d $INCLUDEOS_SRC/test/$1 ] || { echo "Couldn't find test-directory $1" && exit 1; }
+[ -d $INCLUDEOS_SRC/test/$1 ] || { echo "Couldn't find test-directory $1" && return 1; }
 
 echo "Switching app to $INCLUDEOS_SRC/test/$1/"
 pushd ~/.emacs.d
