@@ -3,7 +3,7 @@
 if [ "$#" -lt 1 ] 
 then
     echo "Fetching app from disk"
-    export APP=`cat ~/.emacs.d/app`    
+    export APP=$TEST/`cat ~/.emacs.d/app`
 else
     [ -d $INCLUDEOS_SRC/test/$1 ] || { echo "Couldn't find test-directory $1" && return 1; }
     echo "Switching app to $INCLUDEOS_SRC/test/$1/"
