@@ -9,8 +9,8 @@
 
 ;; Protobuf-mode
 ;; http://melpa.org/packages/protobuf-mode-20150521.2011.el
-(add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
-(require 'protobuf-mode)
+;; (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
+;; (require 'protobuf-mode)
 
 ;; Column-marker
 ;; http://www.emacswiki.org/emacs/download/column-marker.el
