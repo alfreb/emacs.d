@@ -32,7 +32,7 @@
 (defun setapp (name)
   (interactive "MApp: ") 
   ;; Verify that the app exists, otherwise error
-  (setq selected-dir (concat INCLUDEOS_SRC "/test/" name))
+  (setq selected-dir name)
   (when (not (file-exists-p selected-dir))
     (error (concat selected-dir " doesn't exist")))
   ;; Make it idempotent
