@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/cmos
+/home/alfred/acorn
