@@ -1,1 +1,1 @@
-/home/alfred/Acorn/server/http
+/home/alfred/Acorn/server/http/uri
