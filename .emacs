@@ -74,9 +74,10 @@
 
 (defun make (target)
   (interactive "MBuild-target: ")
-  (compile (concat (str-make-path-target OS target) " && "
-		   (str-make-path-target OS "install") " && "
-		   (str-make-path-target APP target))))
+  (let ((default-directory APP))
+    (compile (concat (str-make-path-target OS target) " && "
+		     (str-make-path-target OS "install") " && "
+		     (str-make-path-target APP target)))))
 
 
 (defun format-buffer ()
@@ -90,7 +91,9 @@
   (save-buffer))
 
 ;; Key bindings
-(global-set-key (kbd "C-c RET") 'make)
+(global-set-key (kbd "C-c RET") 'make-app)
+(global-set-key (kbd "C-c a") 'make)
+(global-set-key (kbd "C-c o") 'make-os)
 (global-set-key (kbd "C-x <down>") 'next-error)
 (global-set-key (kbd "C-x <up>") 'previous-error)
 (global-set-key (kbd "C-c c") 'clean)
