@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/timers
+/home/alfred/IncludeOS/test/stress
