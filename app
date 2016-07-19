@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/page_pool
+/home/alfred/IncludeOS/test/memory
