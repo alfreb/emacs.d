@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/vmbuild/
+/home/alfred/IncludeOS/test/memory
