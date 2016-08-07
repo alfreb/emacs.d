@@ -50,13 +50,16 @@
 (defun make-install (path)
   (compile (str-make-path-target path "install")))
 
-(defun make-app (target)
-  (interactive "MBuild-target: ")
-  (make-path-target APP target))
+(defun make-app ()
+  (interactive 
+   (let ((string (read-string "Build App target: " (car my-history) 'my-history)))
+     (make-path-target APP string))))
 
-(defun make-os (target)
-  (interactive "MBuild-target: ")
-  (make-path-target OS target))
+(defun make-os ()
+  (interactive 
+   (let ((string (read-string "Build OS target: " (car my-history) 'my-history)))
+     (make-path-target OS string))))
+
 
 (defun clean-app ()
   (interactive)
@@ -72,13 +75,14 @@
 		   (str-make-path-target APP "clean"))))
 					 
 
-(defun make (target)
-  (interactive "MBuild-target: ")
-  (let ((default-directory APP))
-    (compile (concat (str-make-path-target OS target) " && "
-		     (str-make-path-target OS "install") " && "
-		     (str-make-path-target APP target)))))
-
+(defun make ()
+  (interactive 
+   (let ((target (read-string "Build OS+App target: " (car my-history) 'my-history)))
+     (let ((default-directory APP))
+       (compile (concat (str-make-path-target OS target) " && "
+			(str-make-path-target OS "install") " && "
+			(str-make-path-target APP target)))))))
+   
 
 (defun format-buffer ()
   "Format the whole buffer."
