@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/GSL
+/home/alfred/IncludeOS/test/boot
