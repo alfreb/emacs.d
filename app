@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS_install
+/home/alfred/IncludeOS/test
