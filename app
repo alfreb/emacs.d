@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/boot
+/home/alfred/IncludeOS/test/memory/
