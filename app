@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/kernel/
+/home/alfred/IncludeOS/test/kernel/unit/
