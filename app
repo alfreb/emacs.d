@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/kernel/integration/custom_init
+/home/alfred/IncludeOS/test/platform/integration/unik
