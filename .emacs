@@ -52,12 +52,12 @@
 
 (defun make-app ()
   (interactive 
-   (let ((string (read-string "Build App target: " (car my-history) 'my-history)))
+   (let ((string (read-string "Build App target: " nil  'my-history)))
      (make-path-target APP string))))
 
 (defun make-os ()
   (interactive 
-   (let ((string (read-string "Build OS target: " (car my-history) 'my-history)))
+   (let ((string (read-string "Build OS target: " nil 'my-history)))
      (make-path-target OS string))))
 
 
