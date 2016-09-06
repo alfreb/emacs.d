@@ -1,1 +1,1 @@
-/home/ubuntu/IncludeOS/examples/demo_service
+/home/alfred/IncludeOS/seed
