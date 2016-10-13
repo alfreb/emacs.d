@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/examples/demo_service
+/home/alfred/IncludeOS/test/kernel/integration/context
