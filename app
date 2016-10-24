@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/service/integration/main
+/home/ubuntu/IncludeOS/test/posix/integration/main
