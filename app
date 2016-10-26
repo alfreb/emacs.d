@@ -1,1 +1,1 @@
-/home/ubuntu/IncludeOS/test/posix/integration/main
+/home/ubuntu/IncludeOS/test/fs/integration/vfs
