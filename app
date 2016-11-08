@@ -1,1 +1,1 @@
-/home/ubuntu/IncludeOS/test/net/integration/router
+/home/ubuntu/IncludeOS/test/fs/integration/vfs
