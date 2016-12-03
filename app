@@ -1,1 +1,1 @@
-/home/ubuntu/IncludeOS/test/net/integration/dhcp
+/home/alfred/IncludeOS/test/kernel/integration/grub
