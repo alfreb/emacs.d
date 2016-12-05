@@ -26,8 +26,10 @@
 (column-number-mode)
 
 (setq INCLUDEOS_SRC (or (getenv "INCLUDEOS_SRC") "~/IncludeOS"))
-(setq OS (or (getenv "OS") (concat INCLUDEOS_SRC "/src")))
+(setq OS (or (getenv "OS") (concat INCLUDEOS_SRC "/")))
+(setq OS_BUILD (concat INCLUDEOS_SRC "/build"))
 (setq APP (or (getenv "APP") (concat INCLUDEOS_SRC "/examples/demo-service" )))
+(setq APP_BUILD (concat APP "/build" ))
 
 (defun setapp (name)
   (interactive "MApp: ") 
@@ -38,50 +40,51 @@
   ;; Make it idempotent
   (progn (when (string= selected-dir APP) (error "App allready selected")) 
 	 (setq APP selected-dir)
+	 (setq APP_BUILD (concat APP "/build"))
 	 (shell-command (concat "~/.emacs.d/setapp.sh " name))
 	 (print (concat "APP is now " selected-dir))))
 
 (defun str-make-path-target (path target)
-  (concat "cd " path " && make " target " "))
+  (concat "cd " path " && make -j " target " "))
 
 (defun make-path-target (path target)
   (compile (str-make-path-target path target)))
 
 (defun make-install (path)
-  (compile (str-make-path-target path "install")))
+  (compile (str-make-path-target path "install")))  
 
 (defun make-app ()
   (interactive 
    (let ((string (read-string "Build App target: " nil  'my-history)))
-     (make-path-target APP string))))
+     (make-path-target APP_BUILD string))))
 
 (defun make-os ()
   (interactive 
    (let ((string (read-string "Build OS target: " nil 'my-history)))
-     (make-path-target OS string))))
+     (make-path-target OS_BUILD string))))
 
 
 (defun clean-app ()
   (interactive)
-  (make-path-target APP "clean"))
+  (make-path-target APP_BUILD "clean"))
 
 (defun clean-os ()
   (interactive)
-  (make-path-target OS "clean"))
+  (make-path-target OS_BUILD "clean"))
 
 (defun clean ()
   (interactive)
-  (compile (concat (str-make-path-target OS "clean") " && "
-		   (str-make-path-target APP "clean"))))
+  (compile (concat (str-make-path-target OS_BUILD "clean") " && "
+		   (str-make-path-target APP_BUILD "clean"))))
 					 
 
 (defun make ()
   (interactive 
    (let ((target (read-string "Build OS+App target: " (car my-history) 'my-history)))
-     (let ((default-directory APP))
-       (compile (concat (str-make-path-target OS target) " && "
-			(str-make-path-target OS "install") " && "
-			(str-make-path-target APP target)))))))
+     (let ((default-directory APP_BUILD))
+       (compile (concat (str-make-path-target OS_BUILD target) " && "
+			(str-make-path-target OS_BUILD "install") " && "
+			(str-make-path-target APP_BUILD target)))))))
    
 
 (defun format-buffer ()

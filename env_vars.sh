@@ -1,9 +1,8 @@
 # Environment vars 
 export INCLUDEOS_SRC=~/IncludeOS
-export INCLUDEOS_HOME=~/IncludeOS_install
 export OS=$INCLUDEOS_SRC/src
 export TEST=~/IncludeOS/test
-export APP=$(cat app)
+export APP=$(cat ~/.emacs.d/app)
 
 # Aliases
 alias os="cd $OS"
