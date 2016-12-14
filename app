@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/kernel/integration/grub
+/home/alfred/IncludeOS_vmrun/test/kernel/integration/kprint
