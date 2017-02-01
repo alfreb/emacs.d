@@ -1,1 +1,1 @@
-/home/ubuntu/IncludeOS/test/kernel/integration/grub
+/home/ubuntu/IncludeOS/test/kernel/integration/x86_64
