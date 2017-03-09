@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/net/integration/ip4
+/home/alfred/IncludeOS/test/performance/integration/rx_tx
