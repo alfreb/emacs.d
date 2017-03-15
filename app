@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/net/integration/router
+/home/alfred/IncludeOS/test/net/integration/ip4
