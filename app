@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/performance/integration/rx_tx
+/home/alfred/IncludeOS/test/net/integration/router
