@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/kernel/integration/plugin_init
+/home/alfred/IncludeOS/test/kernel/integration/modules
