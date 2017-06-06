@@ -2,6 +2,9 @@
 ;; Load addons
 (add-to-list 'load-path "~/.emacs.d/extra/")
 
+;; Golang-mode
+(require 'go-mode)
+
 ;; Editor-config 
 ;; https://github.com/editorconfig/editorconfig-emacs
 (require 'editorconfig)
