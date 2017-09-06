@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/stress
+/home/alfred/IncludeOS/src/chainload
