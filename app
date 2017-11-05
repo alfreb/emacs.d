@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/kernel/integration/fiber
+/home/alfred/IncludeOS/test/stl/integration/coroutines
