@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/stl/integration/coroutines
+/home/alfred/IncludeOS/test/kernel/integration/exception
