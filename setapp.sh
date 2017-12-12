@@ -10,9 +10,6 @@ else
     pushd ~/.emacs.d
     export APP=$1
     echo $1 > ./app
-    git add ./app
-    git commit -m "Switching app to $1"
-    git push origin master    
     popd
 fi
 
