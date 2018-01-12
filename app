@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/test/kernel/integration/paging
+/home/alfred/IncludeOS/test
