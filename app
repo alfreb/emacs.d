@@ -1,1 +1,1 @@
-/home/alfred/IncludeOS/examples/STREAM
+/home/alfred/IncludeOS/test
