@@ -4,6 +4,26 @@ export OS=$INCLUDEOS_SRC/src
 export TEST=~/IncludeOS/test
 export APP=$(cat ~/.emacs.d/app)
 
+
+clang_versions="6.0 5.1 4.0 3.9 3.8 3.7"
+
+function detect_clang() {
+    for ver in $clang_versions
+    do
+	cc="clang-$ver"
+	cxx="clang++-$ver"
+	if command -v $cxx &> /dev/null
+	then
+	    CC=$cc
+	    CXX=$cxx
+	    break
+	fi
+    done
+    echo "Using CC: $CC, CXX: $CXX"
+}
+
+detect_clang
+
 # Aliases
 alias os="cd $OS"
 alias app="cd $APP"

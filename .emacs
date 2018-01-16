@@ -1,4 +1,3 @@
-
 ;; Load addons
 (add-to-list 'load-path "~/.emacs.d/extra/")
 
@@ -29,8 +28,11 @@
 (column-number-mode)
 
 (setq INCLUDEOS_SRC (or (getenv "INCLUDEOS_SRC") "~/IncludeOS"))
-(setq OS (or (getenv "OS") (concat INCLUDEOS_SRC "/")))
-(setq OS_BUILD (concat INCLUDEOS_SRC "/build"))
+(message (concat "IncludeOS source: " INCLUDEOS_SRC))
+(setq ARCH (or (getenv "ARCH") "x86_64"))
+(message (concat "IncludeOS ARCH: " ARCH))
+(setq OS_BUILD (concat INCLUDEOS_SRC "/build_" ARCH))
+(message (concat "IncludeOS build: " OS_BUILD))
 (setq APP (or (getenv "APP") (concat INCLUDEOS_SRC "/examples/demo-service" )))
 (setq APP_BUILD (concat APP "/build" ))
 
