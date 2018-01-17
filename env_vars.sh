@@ -1,5 +1,6 @@
 # Environment vars 
 export INCLUDEOS_SRC=~/IncludeOS
+export INCLUDEOS_PREFIX=~/includeos_install
 export OS=$INCLUDEOS_SRC/src
 export TEST=~/IncludeOS/test
 export APP=$(cat ~/.emacs.d/app)
