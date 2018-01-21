@@ -4,7 +4,7 @@ export INCLUDEOS_PREFIX=~/includeos_install
 export OS=$INCLUDEOS_SRC/src
 export TEST=~/IncludeOS/test
 export APP=$(cat ~/.emacs.d/app)
-
+export PATH=$PATH:$INCLUDEOS_PREFIX/bin
 
 clang_versions="6.0 5.1 4.0 3.9 3.8 3.7"
 
@@ -15,8 +15,8 @@ function detect_clang() {
 	cxx="clang++-$ver"
 	if command -v $cxx &> /dev/null
 	then
-	    CC=$cc
-	    CXX=$cxx
+	    export CC=$cc
+	    export CXX=$cxx
 	    break
 	fi
     done
