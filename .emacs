@@ -50,16 +50,18 @@
 	 (print (concat "APP is now " selected-dir))))
 
 (defun str-make-path-target (path target)
-  (concat "cd " path " && make -j " target " "))
+  (concat "cd " path " && make " target " "))
 
-(defun make-path-target (path target)
-  (compile (str-make-path-target path target)))
+  (defun make-path-target (path target)
+    (message (concat "Making path " path))    
+    (compile (str-make-path-target path target)))
 
 (defun make-install (path)
   (compile (str-make-path-target path "install")))  
 
 (defun make-app ()
-  (interactive 
+  (message (concat "Making app " APP_BUILD))     
+  (interactive
    (let ((string (read-string "Build App target: " nil  'my-history)))
      (make-path-target APP_BUILD string))))
 

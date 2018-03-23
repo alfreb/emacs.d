@@ -5,8 +5,9 @@ export OS=$INCLUDEOS_SRC/src
 export TEST=~/IncludeOS/test
 export APP=$(cat ~/.emacs.d/app)
 export PATH=$PATH:$INCLUDEOS_PREFIX/bin
+export num_jobs=-j32
 
-clang_versions="6.0 5.1 4.0 3.9 3.8 3.7"
+clang_versions="6.0 5.1 5.0 4.0 3.9 3.8 3.7"
 
 function detect_clang() {
     for ver in $clang_versions
@@ -27,8 +28,9 @@ detect_clang
 
 # Aliases
 alias os="cd $OS"
-alias app="cd $APP"
 alias setapp=". ~/.emacs.d/setapp.sh"
+
+setapp
 
 # -nw is useful when you work in an environment with emacs-GUI (I don't use it)
 alias emacs="emacs -nw"

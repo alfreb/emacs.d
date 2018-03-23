@@ -1,19 +1,42 @@
 #! /bin/bash
 
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+popd () {
+    command popd "$@" > /dev/null
+}
+
+export_app () {
+    export APP=`cat ~/.emacs.d/app`    
+}
+
+set_app () {
+    pushd $1
+    export APP=$(pwd)	
+    popd
+    echo "Switching app to $APP"
+    pushd ~/.emacs.d
+    echo $APP > ./app
+    popd    
+}
+
+goto_app () {
+    export_app
+    echo "Moving to $APP"    
+    cd $APP
+}
+
 if [ "$#" -lt 1 ] 
 then
-    echo "Fetching app from disk"
-    export APP=`cat ~/.emacs.d/app`
+    export_app
 else
     [ -d $1 ] || { echo "Couldn't find test-directory $1" && return 1; }
-    echo "Switching app to $INCLUDEOS_SRC/test/$1/"
-    pushd ~/.emacs.d
-    export APP=$1
-    echo $1 > ./app
-    popd
+    goto_app $1
 fi
 
 echo "App is now $APP"
-alias app="cd $APP"
+alias app="goto_app"
 
 
