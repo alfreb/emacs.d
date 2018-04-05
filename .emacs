@@ -24,8 +24,37 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+(setq c-default-style "stroustrup"
+                c-basic-offset 4)
+
 ;; Column-numbers
 (column-number-mode)
+
+;; Add MELPA
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+		    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
+(package-initialize)
+
+;; Enable helm (https://github.com/emacs-helm/helm/)
+(require 'helm-config)
+
+;; Dumb-jump keybindings
+(use-package dumb-jump
+	     :bind (("M-g o" . dumb-jump-go-other-window)
+		    ("M-g j" . dumb-jump-go)
+		    ("M-g i" . dumb-jump-go-prompt)
+		    ("M-g x" . dumb-jump-go-prefer-external)
+		    ("M-g z" . dumb-jump-go-prefer-external-other-window))
+	     :config (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+	       :ensure)
 
 (setq INCLUDEOS_SRC (or (getenv "INCLUDEOS_SRC") "~/IncludeOS"))
 (message (concat "IncludeOS source: " INCLUDEOS_SRC))
